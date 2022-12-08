@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sayName = void 0;
 const test_1 = require("./test");
-const getName = test_1.sayName("DainPark");
-console.log(getName);
+Object.defineProperty(exports, "sayName", { enumerable: true, get: function () { return test_1.sayName; } });
