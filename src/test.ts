@@ -5,6 +5,9 @@ type t = {
 
 export const getWords:t = (name) => {
     const getData = name.split("");
+    
+
+
     return [
         [""],
         {
