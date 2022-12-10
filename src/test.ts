@@ -1,8 +1,14 @@
 type t = {
-    <T>(value: T): T
+    (value: string): any[];
 }
 
 
-export const sayName:t = (name) => {
-    return name;
+export const getWords:t = (name) => {
+    const getData = name.split("");
+    return [
+        [""],
+        {
+            dain: ""
+        }
+    ]
 }

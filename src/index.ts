@@ -1,4 +1,4 @@
-import { sayName } from "./test";
+import { getWords } from "./test";
 
 // const getName: string = sayName("DainPark");
 
