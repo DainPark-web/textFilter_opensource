@@ -8,13 +8,16 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "start": "npx ts-node src/index.ts",
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha test/*.js -- -R spec"
   },
   "author": "DainPark",
   "license": "MIT",
   "devDependencies": {
     "@types/pluralize": "^0.0.29",
     "chai": "^4.3.7",
+    "coveralls": "^3.1.1",
+    "istanbul": "^0.4.5",
     "mocha": "^10.1.0",
     "ts-node": "^10.9.1"
   },
