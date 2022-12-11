@@ -1,2 +1,2 @@
-import { sayName } from "./test";
-export { sayName };
+import { getWords } from "./test";
+export { getWords };

@@ -1,7 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sayName = void 0;
-const sayName = (name) => {
-    return name;
+exports.getWords = void 0;
+const getWords = (name) => {
+    const getData = name.split("");
+    return "d";
+    // return [
+    //     [""],
+    //     {
+    //         dain: ""
+    //     }
+    // ]
 };
-exports.sayName = sayName;
+exports.getWords = getWords;

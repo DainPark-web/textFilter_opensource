@@ -1,17 +1,18 @@
 interface getWordsI{
-    (name: string): any[]
+    (name: string): any[];
+   
 }
 
 
-export const getWords:getWordsI = (name) => {
+export const getWords = (name:string):string => {
     const getData = name.split("");
     
 
-
-    return [
-        [""],
-        {
-            dain: ""
-        }
-    ]
+    return "d"
+    // return [
+    //     [""],
+    //     {
+    //         dain: ""
+    //     }
+    // ]
 }
