@@ -28,6 +28,16 @@ export class textFilter {
         return calO
     }
 
+    private getUnique(list:string[]):string[]{
+        const unique = list.map((letter) => {
+            return letter.toUpperCase();
+        })
+        const uniqueSet = new Set(unique);
+        const uniqueList = [...uniqueSet];
+
+        return uniqueList
+    }
+
 
     getLetters(){
         this.letters = this.getText.split("").filter((letter) => {
@@ -35,13 +45,7 @@ export class textFilter {
                 return letter;
             }
         });
-        const unique = this.letters.map((letter) => {
-            return letter.toUpperCase();
-        })
-        const uniqueSet = new Set(unique);
-        const uniqueList = [...uniqueSet];
-
-
+        const uniqueList = this.getUnique(this.letters);
         return {
             letters: this.letters,
             unique: uniqueList,
@@ -52,10 +56,13 @@ export class textFilter {
 
     getWords(){
         this.words = this.getText.split(" ")
+        const uniqueList = this.getUnique(this.words);
         return {
             words: this.words,
+            unique: uniqueList,
             length: this.words.length,
-            cal: this.cal(this.words)
+            cal: this.cal(this.words),
+            
         }
     }
 
