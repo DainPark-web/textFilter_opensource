@@ -1,3 +1,9 @@
-import { getWords } from "./test";
+import { textFilter } from "./filter";
 
-export { getWords };
+const d = new textFilter("I'm Dain Park");
+console.log(d.getData());
+// console.log(d.getWords());
+// console.log(d.getLetters());
+
+
+export { textFilter };
