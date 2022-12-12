@@ -1,2 +1,2 @@
-import { getWords } from "./test";
-export { getWords };
+import { textFilter } from "./filter";
+export { textFilter };

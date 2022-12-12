@@ -1,7 +1,7 @@
-// interface getWordsI{
-//     (name: string): any;
+interface calI{
+    [key: string]: number;
    
-// }
+}
 
 export class textFilter {
     private getText:string
@@ -12,6 +12,20 @@ export class textFilter {
         this.getText = text;
         this.words = [];
         this.letters = [];
+    }
+    private cal(list:string[]):calI{
+        const newList = list.map((t) => t.toLowerCase());
+        const calO:any = {};
+
+        newList.forEach((v) => {
+            if(calO[v]){
+                calO[v] = calO[v] + 1;
+            }else{
+                calO[v] = 1;
+            }
+        })
+
+        return calO
     }
 
 
@@ -31,7 +45,8 @@ export class textFilter {
         return {
             letters: this.letters,
             unique: uniqueList,
-            length: this.letters.length
+            length: this.letters.length,
+            cal: this.cal(this.letters)
         }
     }
 
@@ -39,7 +54,8 @@ export class textFilter {
         this.words = this.getText.split(" ")
         return {
             words: this.words,
-            length: this.words.length
+            length: this.words.length,
+            cal: this.cal(this.words)
         }
     }
 

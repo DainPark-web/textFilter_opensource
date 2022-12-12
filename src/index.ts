@@ -1,8 +1,8 @@
 import { textFilter } from "./filter";
 
-const d = new textFilter("I'm Dain Park");
-console.log(d.getData());
-// console.log(d.getWords());
+const d = new textFilter("ddd fff hhh");
+// console.log(d.getData());
+console.log(d.getWords());
 // console.log(d.getLetters());
 
 

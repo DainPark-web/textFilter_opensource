@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWords = void 0;
-const test_1 = require("./test");
-Object.defineProperty(exports, "getWords", { enumerable: true, get: function () { return test_1.getWords; } });
+exports.textFilter = void 0;
+const filter_1 = require("./filter");
+Object.defineProperty(exports, "textFilter", { enumerable: true, get: function () { return filter_1.textFilter; } });
+const d = new filter_1.textFilter("I'm Dain Park");
+console.log(d.getData());
