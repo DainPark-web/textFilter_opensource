@@ -15,20 +15,17 @@ export class textFilter {
     this.sentences = [];
   }
 
+  private search(text?: string): string[] {
+    const list: any[] = [];
+    this.sentences.forEach((v) => {
+      const reg = new RegExp(`(${text})`, "i");
+      const d = v.match(reg);
 
-  private search(text?:string):string[]{
-    const list:any[] = []
-    this.sentences.forEach(v => {
-      const reg = new RegExp(`(${text})`, 'i')
-      const d = v.match(reg)
-      
-      if(d){
-        list.push(v)
+      if (d) {
+        list.push(v);
       }
-
-    })
+    });
     return list;
-
   }
   private cal(list: string[]): calI {
     const newList = list.map((t) => t.toLowerCase());
@@ -55,33 +52,32 @@ export class textFilter {
     return uniqueList;
   }
 
-  private getSentencesStartWidth(): any[]{
+  private getSentencesStartWidth(): any[] {
     const startsWords = this.sentences.map((sen) => {
-        // console.log(sen)
-        const neS = sen;
-        const list = neS.split(" ")[0].toLowerCase();
-        return list;
-
-    })
+      // console.log(sen)
+      const neS = sen;
+      const list = neS.split(" ")[0].toLowerCase();
+      return list;
+    });
     const startsWordsSet = new Set(startsWords);
-    const startsWordsUList = [...startsWordsSet]
-    
-    const cal:any = {}
+    const startsWordsUList = [...startsWordsSet];
+
+    const cal: any = {};
     // console.log(startsWordsUList)
-    startsWordsUList.forEach(value => {
-      if(this.sentences.length > 0){
-        this.sentences.forEach(va => {
-          const d = va.toLowerCase()
-          if(d.startsWith(value)){
-            if(cal[value]){
-              cal[value] = [...cal[value], va]
-            }else{
-              cal[value] = [va]
+    startsWordsUList.forEach((value) => {
+      if (this.sentences.length > 0) {
+        this.sentences.forEach((va) => {
+          const d = va.toLowerCase();
+          if (d.startsWith(value)) {
+            if (cal[value]) {
+              cal[value] = [...cal[value], va];
+            } else {
+              cal[value] = [va];
             }
           }
-        })
+        });
       }
-    })
+    });
 
     return cal;
   }
@@ -121,28 +117,27 @@ export class textFilter {
     const uniqueList = this.getUnique(this.sentences);
 
     const startList = this.getSentencesStartWidth();
-    
-    const searchResult = this.search(searchWord)
-  
+
+    const searchResult = this.search(searchWord);
+
     return {
       sentences: this.sentences,
       unique: uniqueList,
       length: this.sentences.length,
       cal: this.cal(this.sentences),
       startList: startList,
-      searchResult:searchResult
+      searchResult: searchResult,
     };
   }
-
 
   getData() {
     const letter = this.getLetters();
     const word = this.getWords();
     const sentence = this.getSentences();
     return {
-        letter,
-        word,
-        sentence
+      letter,
+      word,
+      sentence,
     };
   }
 }
