@@ -14,6 +14,22 @@ export class textFilter {
     this.letters = [];
     this.sentences = [];
   }
+
+
+  private search(text?:string):string[]{
+    const list:any[] = []
+    this.sentences.forEach(v => {
+      const reg = new RegExp(`(${text})`, 'i')
+      const d = v.match(reg)
+      
+      if(d){
+        list.push(v)
+      }
+
+    })
+    return list;
+
+  }
   private cal(list: string[]): calI {
     const newList = list.map((t) => t.toLowerCase());
     const calO: any = {};
@@ -41,7 +57,7 @@ export class textFilter {
 
   private getSentencesStartWidth(list: string[]): any[]{
     const startsWords = this.sentences.map((sen) => {
-        console.log(sen)
+        // console.log(sen)
         const neS = sen;
         const list = neS.split(" ")[0].toLowerCase();
         return list;
@@ -51,7 +67,7 @@ export class textFilter {
     const startsWordsUList = [...startsWordsSet]
     
     const cal:any = {}
-    console.log(startsWordsUList)
+    // console.log(startsWordsUList)
     startsWordsUList.forEach(value => {
       if(this.sentences.length > 0){
         this.sentences.forEach(va => {
@@ -96,7 +112,7 @@ export class textFilter {
     };
   }
 
-  getSentences(findStartSentence?: string) {
+  getSentences(searchWord?: string) {
     const list = this.getText.split(".").map((text) => {
       const newT = text.trim();
       return newT;
@@ -106,14 +122,18 @@ export class textFilter {
 
     const startList = this.getSentencesStartWidth(this.sentences );
     
+    const searchResult = this.search(searchWord)
+  
     return {
       sentences: this.sentences,
       unique: uniqueList,
       length: this.sentences.length,
       cal: this.cal(this.sentences),
-      startList: startList
+      startList: startList,
+      searchResult:searchResult
     };
   }
+
 
   getData() {
     const letter = this.getLetters();
