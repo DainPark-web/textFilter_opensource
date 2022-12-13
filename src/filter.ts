@@ -51,13 +51,23 @@ export class textFilter {
     const startsWordsUList = [...startsWordsSet]
     
     const cal:any = {}
-
-    startsWordsUList.forEach((v) => {
-        //여기서부터 하기
-        // cal[v] = [...cal[v]]
+    console.log(startsWordsUList)
+    startsWordsUList.forEach(value => {
+      if(this.sentences.length > 0){
+        this.sentences.forEach(va => {
+          const d = va.toLowerCase()
+          if(d.startsWith(value)){
+            if(cal[value]){
+              cal[value] = [...cal[value], va]
+            }else{
+              cal[value] = [va]
+            }
+          }
+        })
+      }
     })
 
-    return []
+    return cal;
   }
 
   getLetters() {
@@ -95,12 +105,13 @@ export class textFilter {
     const uniqueList = this.getUnique(this.sentences);
 
     const startList = this.getSentencesStartWidth(this.sentences );
-
+    
     return {
       sentences: this.sentences,
       unique: uniqueList,
       length: this.sentences.length,
       cal: this.cal(this.sentences),
+      startList: startList
     };
   }
 
