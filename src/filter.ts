@@ -39,6 +39,27 @@ export class textFilter {
     return uniqueList;
   }
 
+  private getSentencesStartWidth(list: string[]): any[]{
+    const startsWords = this.sentences.map((sen) => {
+        console.log(sen)
+        const neS = sen;
+        const list = neS.split(" ")[0].toLowerCase();
+        return list;
+
+    })
+    const startsWordsSet = new Set(startsWords);
+    const startsWordsUList = [...startsWordsSet]
+    
+    const cal:any = {}
+
+    startsWordsUList.forEach((v) => {
+        //여기서부터 하기
+        // cal[v] = [...cal[v]]
+    })
+
+    return []
+  }
+
   getLetters() {
     this.letters = this.getText.split("").filter((letter) => {
       if (letter !== " ") {
@@ -65,14 +86,15 @@ export class textFilter {
     };
   }
 
-  getSentences() {
+  getSentences(findStartSentence?: string) {
     const list = this.getText.split(".").map((text) => {
       const newT = text.trim();
       return newT;
     });
     this.sentences = list.filter((sen) => sen !== "");
-
     const uniqueList = this.getUnique(this.sentences);
+
+    const startList = this.getSentencesStartWidth(this.sentences );
 
     return {
       sentences: this.sentences,
