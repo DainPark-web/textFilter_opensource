@@ -55,7 +55,7 @@ export class textFilter {
     return uniqueList;
   }
 
-  private getSentencesStartWidth(list: string[]): any[]{
+  private getSentencesStartWidth(): any[]{
     const startsWords = this.sentences.map((sen) => {
         // console.log(sen)
         const neS = sen;
@@ -120,7 +120,7 @@ export class textFilter {
     this.sentences = list.filter((sen) => sen !== "");
     const uniqueList = this.getUnique(this.sentences);
 
-    const startList = this.getSentencesStartWidth(this.sentences );
+    const startList = this.getSentencesStartWidth();
     
     const searchResult = this.search(searchWord)
   
