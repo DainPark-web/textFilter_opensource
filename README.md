@@ -11,3 +11,9 @@ When my team was working to analyze the text, they had a problem with it because
 
 Still, we are using this tool regularly for ourselves. I hope you will too.
 If you want to contribute, issues and PRs are welcome.
+
+### Quick Start
+
+```
+npm i @dainpark/textfilter
+```
