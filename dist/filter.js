@@ -6,6 +6,18 @@ class textFilter {
         this.getText = text;
         this.words = [];
         this.letters = [];
+        this.sentences = [];
+    }
+    search(text) {
+        const list = [];
+        this.sentences.forEach((v) => {
+            const reg = new RegExp(`(${text})`, "i");
+            const d = v.match(reg);
+            if (d) {
+                list.push(v);
+            }
+        });
+        return list;
     }
     cal(list) {
         const newList = list.map((t) => t.toLowerCase());
@@ -28,6 +40,34 @@ class textFilter {
         const uniqueList = [...uniqueSet];
         return uniqueList;
     }
+    getSentencesStartWidth() {
+        const startsWords = this.sentences.map((sen) => {
+            // console.log(sen)
+            const neS = sen;
+            const list = neS.split(" ")[0].toLowerCase();
+            return list;
+        });
+        const startsWordsSet = new Set(startsWords);
+        const startsWordsUList = [...startsWordsSet];
+        const cal = {};
+        // console.log(startsWordsUList)
+        startsWordsUList.forEach((value) => {
+            if (this.sentences.length > 0) {
+                this.sentences.forEach((va) => {
+                    const d = va.toLowerCase();
+                    if (d.startsWith(value)) {
+                        if (cal[value]) {
+                            cal[value] = [...cal[value], va];
+                        }
+                        else {
+                            cal[value] = [va];
+                        }
+                    }
+                });
+            }
+        });
+        return cal;
+    }
     getLetters() {
         this.letters = this.getText.split("").filter((letter) => {
             if (letter !== " ") {
@@ -39,7 +79,7 @@ class textFilter {
             letters: this.letters,
             unique: uniqueList,
             length: this.letters.length,
-            cal: this.cal(this.letters)
+            cal: this.cal(this.letters),
         };
     }
     getWords() {
@@ -52,13 +92,33 @@ class textFilter {
             cal: this.cal(this.words),
         };
     }
+    getSentences(searchWord) {
+        const list = this.getText.split(".").map((text) => {
+            const newT = text.trim();
+            return newT;
+        });
+        this.sentences = list.filter((sen) => sen !== "");
+        const uniqueList = this.getUnique(this.sentences);
+        const startList = this.getSentencesStartWidth();
+        const searchResult = this.search(searchWord);
+        return {
+            sentences: this.sentences,
+            unique: uniqueList,
+            length: this.sentences.length,
+            cal: this.cal(this.sentences),
+            startList: startList,
+            searchResult: searchResult,
+        };
+    }
     getData() {
         const letter = this.getLetters();
         const word = this.getWords();
-        return [
+        const sentence = this.getSentences();
+        return {
             letter,
-            word
-        ];
+            word,
+            sentence,
+        };
     }
 }
 exports.textFilter = textFilter;

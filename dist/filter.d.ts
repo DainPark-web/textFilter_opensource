@@ -2,12 +2,15 @@ interface calI {
     [key: string]: number;
 }
 export declare class textFilter {
-    private getText;
+    private readonly getText;
     private words;
     private letters;
+    private sentences;
     constructor(text: string);
+    private search;
     private cal;
     private getUnique;
+    private getSentencesStartWidth;
     getLetters(): {
         letters: any[];
         unique: string[];
@@ -20,16 +23,35 @@ export declare class textFilter {
         length: number;
         cal: calI;
     };
-    getData(): ({
-        letters: any[];
+    getSentences(searchWord?: string): {
+        sentences: any[];
         unique: string[];
         length: number;
         cal: calI;
-    } | {
-        words: any[];
-        unique: string[];
-        length: number;
-        cal: calI;
-    })[];
+        startList: any[];
+        searchResult: string[];
+    };
+    getData(): {
+        letter: {
+            letters: any[];
+            unique: string[];
+            length: number;
+            cal: calI;
+        };
+        word: {
+            words: any[];
+            unique: string[];
+            length: number;
+            cal: calI;
+        };
+        sentence: {
+            sentences: any[];
+            unique: string[];
+            length: number;
+            cal: calI;
+            startList: any[];
+            searchResult: string[];
+        };
+    };
 }
 export {};
