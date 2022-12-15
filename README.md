@@ -17,3 +17,7 @@ If you want to contribute, issues and PRs are welcome.
 ```
 npm i @dainpark/textfilter
 ```
+
+### License
+
+Mit &copy; [Dain Park](https://github.com/DainPark-web)
